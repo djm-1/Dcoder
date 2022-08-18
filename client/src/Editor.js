@@ -54,8 +54,10 @@ export default function Editor() {
     }
   };
 
-  async function init() {
-    const ex=document.getElementById("editor");
+
+  useEffect(() => {
+    
+      const ex=document.getElementById("editor");
     const cm = CodeMirror.fromTextArea(ex,{
       mode: "text/x-c++src",
       theme: theme,
@@ -67,9 +69,11 @@ export default function Editor() {
     
     cm.setSize("100%", "100vh");
     cm.setOption("value", code);
-    seteditor(cm);
-  }
+    seteditor(cm);  
+    },[])
+  
 
+  
   useEffect(() => {
     const s = io("http://localhost:5000/");
     setsocket(s);
@@ -80,6 +84,7 @@ export default function Editor() {
     });
     s.on("joined", ({ clients, username, socketId }) => {
       //console.log(clients)
+      playAudio();
       toast(`${username} has joined Dcoder`);
       setpeople(clients);
     });
@@ -89,11 +94,12 @@ export default function Editor() {
         return prev.filter((client) => client.socketId !== socketId);
       });
     });
+    
     return () => {
-      init();
+      //init();
       playAudio();
       s.disconnect();
-    };
+     };
   }, []);
 
   const playAudio = () => {

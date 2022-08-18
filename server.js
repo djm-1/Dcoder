@@ -2,17 +2,16 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const path = require('path');
-// const { Server } = require('socket.io')
-//const ACTIONS = require('./src/Actions');
+
 
 const server = http.createServer(app);
 
-if(process.env.NODE_ENV === 'production'){
-app.use(express.static('./client/build'));
-app.use((req, res, next) => {
-    res.sendFile(path.join(__dirname, './client/build', 'index.html'));
-});
-}
+//if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('./client/build'));
+    app.use((req, res, next) => {
+        res.sendFile(path.join(__dirname, './client/build', 'index.html'));
+    });
+//}
 
 const io=require('socket.io')(server,{
      cors:{
@@ -27,13 +26,6 @@ const mongoose=require('mongoose');
 const db=`mongodb://jishu:6wXF9e49qHMBbSB@ac-uapmlma-shard-00-00.jpmoif5.mongodb.net:27017,ac-uapmlma-shard-00-01.jpmoif5.mongodb.net:27017,ac-uapmlma-shard-00-02.jpmoif5.mongodb.net:27017/?ssl=true&replicaSet=atlas-6ciqwn-shard-0&authSource=admin&retryWrites=true&w=majority`;
 mongoose.connect(db).then(()=>console.log("DB Connected!")).catch((err)=>console.log(err));
 
-
-// const io=require('socket.io')(5000,{
-//     cors:{
-//         origin:'*',
-//         methods:["GET","POST"]
-//     }
-// })
 
 // what happens when user joins
 
