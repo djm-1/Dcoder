@@ -1,0 +1,103 @@
+.CodeMirror{
+    font-size: 19px !important;
+  }
+
+.dot{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    margin: 2px;
+    display: inline-block;
+}
+
+
+/* copied css */
+
+
+.home {
+  margin: 0;
+  padding: 0;
+  font-family: helvetica;
+  height: 100vh;
+  width: 100%;
+  background-image: url(https://source.unsplash.com/random/1350x900/?mountain);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  overflow-y: hidden;
+}
+
+.tbar {
+  color: white;
+  font-size: 12px;
+  display: flex;
+  padding: 10px;
+  justify-content: flex-end;
+  place-items: center;
+}
+
+.tbar > i, .tbar > .time{
+  padding-right: 8px;
+}
+
+
+.content {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.pic {
+  margin: 0 auto;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-image: url(https://images.unsplash.com/photo-1597953601374-1ff2d5640c85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: grey;
+}
+
+/* had to do this to center name "Andrew" */
+.wrap {
+  display: flex;
+  font-weight: lighter;
+  font-size: 18px;
+}
+
+.name {
+  margin: 20px auto;
+  font-family: 'Heebo', sans-serif;
+  letter-spacing: 1px;
+}
+
+#password,#username {
+  font-size: 17px;
+  color: white;
+  background-color: hsla(0, 0%, 45%, 90%);
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  padding: 0 5px;
+
+}
+
+#password::placeholder,#username::placeholder {
+  font-size: 14px;
+  vertical-align: center;
+  color: rgb(170,170,170);
+}
+ 
+input:focus {
+  outline: none;
+}
+.input-wrap{
+  background-color: rgba(0,0,0,0.4);
+  padding: 15px;
+  border-radius: 5px;
+}
