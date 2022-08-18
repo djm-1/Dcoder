@@ -8,9 +8,9 @@ const path = require('path');
 const server = http.createServer(app);
 
 if(process.env.NODE_ENV === 'production'){
-app.use(express.static('../client/build'));
+app.use(express.static('./client/build'));
 app.use((req, res, next) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, './client/build', 'index.html'));
 });
 }
 
