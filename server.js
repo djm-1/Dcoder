@@ -4,7 +4,7 @@ const http = require('http');
 const path = require('path');
 
 
-var server = http.createServer(app);
+const server = http.createServer(app);
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('./client/build'));
@@ -12,7 +12,6 @@ if(process.env.NODE_ENV === 'production'){
         res.sendFile(path.join(__dirname, './client/build', 'index.html'));
     });
     
-    server=window.location.hostname
 }
 
 const io=require('socket.io')(server,{
