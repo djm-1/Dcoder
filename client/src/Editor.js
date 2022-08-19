@@ -75,7 +75,7 @@ export default function Editor() {
 
   
   useEffect(() => {
-    const s = io("https://dcodr.herokuapp.com:80/");
+    const s = io(`${process.env.BASE_URL}:${process.env.PORT}/`);
     setsocket(s);
     //when I join a room
     s.emit("join", {
