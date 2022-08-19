@@ -4,14 +4,16 @@ const http = require('http');
 const path = require('path');
 
 
-const server = http.createServer(app);
+var server = http.createServer(app);
 
-//if(process.env.NODE_ENV === 'production'){
+if(process.env.NODE_ENV === 'production'){
     app.use(express.static('./client/build'));
     app.use((req, res, next) => {
         res.sendFile(path.join(__dirname, './client/build', 'index.html'));
     });
-//}
+    
+    server=window.location.hostname
+}
 
 const io=require('socket.io')(server,{
      cors:{
