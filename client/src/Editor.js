@@ -75,7 +75,7 @@ export default function Editor() {
 
   
   useEffect(() => {
-    const s = io("http://localhost:5000/");
+    const s = io(`${process.env.BASE_URL}:5000/`);
     setsocket(s);
     //when I join a room
     s.emit("join", {
