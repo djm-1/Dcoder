@@ -75,7 +75,7 @@ export default function Editor() {
 
   
   useEffect(() => {
-    const s = io('/');
+    const s = io(`/:${process.env.PORT}`);
     setsocket(s);
     //when I join a room
     s.emit("join", {
