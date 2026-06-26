@@ -6,6 +6,10 @@ const path = require('path');
 
 const server = http.createServer(app);
 
+app.get('/healthz', (req, res) => {
+    res.status(200).json({ ok: true });
+});
+
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('./client/build'));
     app.use((req, res, next) => {
@@ -24,7 +28,12 @@ const io=require('socket.io')(server,{
 const Document=require('./Document')
 const mongoose=require('mongoose');
 
-const db=`mongodb://jishu:6wXF9e49qHMBbSB@ac-uapmlma-shard-00-00.jpmoif5.mongodb.net:27017,ac-uapmlma-shard-00-01.jpmoif5.mongodb.net:27017,ac-uapmlma-shard-00-02.jpmoif5.mongodb.net:27017/?ssl=true&replicaSet=atlas-6ciqwn-shard-0&authSource=admin&retryWrites=true&w=majority`;
+const db = process.env.MONGODB_URI;
+if (!db) {
+    console.error('MONGODB_URI is required');
+    process.exit(1);
+}
+
 mongoose.connect(db).then(()=>console.log("DB Connected!")).catch((err)=>console.log(err));
 
 
